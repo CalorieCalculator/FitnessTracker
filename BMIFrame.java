@@ -108,14 +108,15 @@ public class BMIFrame extends JFrame {
      
      learnMore = new JButton("Learn More");
      learnMore.addActionListener(new Action2());//change action
-     learnMore.setBounds(315,220,100,30);
-     contentPane.add(learnMore);
+       contentPane.add(learnMore);
+       learnMore.setBounds(315,220,100,30);
 
 
    }
  }
  class Action2 implements ActionListener{
    public void actionPerformed(ActionEvent e){
+       bInstructor instructor = new bInstructor();
      JFrame fr = new JFrame("More about your BMI");
      JTextArea bmiTxt = new JTextArea("BMI VALUES\n Underweight: Under 18.5\n Normal: 18.5-24.9\n Overweight: 25-29.9\n Obese: 30 or over");
      fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -123,6 +124,7 @@ public class BMIFrame extends JFrame {
      bmiTxt.setEditable(false);
      fr.setContentPane(bmiTxt);
      fr.setVisible(true);
+     instructor.setVisible(true);
    }
  }
 }

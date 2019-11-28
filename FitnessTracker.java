@@ -19,8 +19,8 @@ public class FitnessTracker extends JPanel implements ActionListener{
 	    cont = new JButton("Continue");
 	    cont.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		BMIFrame bmiInfo = new BMIFrame();
-	    		bmiInfo.setVisible(true);
+	    		Information information = new Information();
+	    		information.setVisible(true);
 	    	}
 	    }); 
 	    add(cont);
