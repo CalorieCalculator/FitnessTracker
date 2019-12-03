@@ -19,9 +19,16 @@ public class BMI {
   System.out.printf("Your BMI is %f", bmi);
   
   System.out.println(" BMI VALUES");
+  if (bmi<18.5){
   System.out.println("Underweight: Under 18.5");
+  }
+  else if (18.5<=bmi<24.9){
   System.out.println("Normal: 18.5-24.9");
+  }
+  else if (25<=bmi<29.9){
   System.out.println("Overweight: 25-29.9");
+  }
+  else 
   System.out.println("Obese: 30 or over");
  }
 
