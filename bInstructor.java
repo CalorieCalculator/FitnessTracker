@@ -1,38 +1,22 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
+import javax.swing.*;
+import java.awt.*;
 
 public class bInstructor extends JFrame {
-	private JTextArea bmiText1;
-	private JPanel contentPane;
+    private JTextArea bmiText1;
+    private JPanel panel;
+    
+    public bInstructor(){
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					bInstructor frame = new bInstructor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public bInstructor() {
-		bmiText1 = new JTextArea("BMI VALUES\n Underweight: Under 18.5\n Normal: 18.5-24.9\n Overweight: 25-29.9\n Obese: 30 or over");
-        
-	}
+        bmiText1 = new JTextArea("BMI VALUES\n Underweight: Under 18.5\n Normal: 18.5-24.9\n Overweight: 25-29.9\n Obese: 30 or over");
+        bmiText1.setEditable(false);
+        panel = new JPanel();
+        setBounds(100, 100, 430, 313);
+        bmiText1.setEditable(false);
+        panel.setLayout(new BorderLayout());
+        panel.add(bmiText1,BorderLayout.CENTER);
+        getContentPane().add(panel);
+    }
 
 }
+
+
