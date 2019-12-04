@@ -11,7 +11,7 @@ public class BMIFrame extends JFrame {
  protected JTextField weight;
  protected JTextField height;
  protected JTextField inches;
- protected JButton btnCalculate, learnMore;
+ protected JButton btnCalculate, learnMore, option;
  private static DecimalFormat df = new DecimalFormat("00.0");
  /**
   * Launch the application.
@@ -108,23 +108,29 @@ public class BMIFrame extends JFrame {
      
      learnMore = new JButton("Learn More");
      learnMore.addActionListener(new Action2());//change action
-       contentPane.add(learnMore);
-       learnMore.setBounds(315,220,100,30);
+     contentPane.add(learnMore);
+     learnMore.setBounds(315,220,100,30);
+       
+     option = new JButton("Information");
+     option.addActionListener(new Action3());
+     contentPane.add(option);
+     option.setBounds(315,240,100,30);
 
 
    }
  }
  class Action2 implements ActionListener{
    public void actionPerformed(ActionEvent e){
-       bInstructor instructor = new bInstructor();
-     JFrame fr = new JFrame("More about your BMI");
-     JTextArea bmiTxt = new JTextArea("BMI VALUES\n Underweight: Under 18.5\n Normal: 18.5-24.9\n Overweight: 25-29.9\n Obese: 30 or over");
-     fr.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-     fr.setSize(300,200);
-     bmiTxt.setEditable(false);
-     fr.setContentPane(bmiTxt);
-     fr.setVisible(true);
-     instructor.setVisible(true);
+	   bInstructor instructor = new bInstructor();
+	   instructor.setVisible(true);
    }
  }
+ 
+ class Action3 implements ActionListener{
+	 public void actionPerformed(ActionEvent e) {
+		 OptionInfo info = new OptionInfo();
+		 info.setVisible(true);
+	 }
+ }
+ 
 }
