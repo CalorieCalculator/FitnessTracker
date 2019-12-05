@@ -12,8 +12,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
-public class Informational extends JFrame {
+public class OptionInfo extends JFrame {
 
 	private JPanel contentPane;
 
@@ -24,7 +30,7 @@ public class Informational extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Informational frame = new Informational();
+					OptionInfo frame = new OptionInfo();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,57 +42,127 @@ public class Informational extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Informational() {
+	public OptionInfo() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 513, 345);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
 		JMenu mnTrackGain = new JMenu("Track");
+		mnTrackGain.setHorizontalAlignment(SwingConstants.LEFT);
+		mnTrackGain.setFont(new Font("Segoe UI", Font.BOLD, 15));
 		menuBar.add(mnTrackGain);
 		
 		JMenuItem mntmTrackGain = new JMenuItem("Track Gain");
 		mntmTrackGain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//write code for gain
+				GainTracker gain = new GainTracker();
+				gain.setVisible(true);
 			}
 		});
 		mnTrackGain.add(mntmTrackGain);
 		
-		JMenuItem mntmTrackLoss = new JMenuItem("Track Loss");
-		mntmTrackLoss.addActionListener(new ActionListener() {
+		JMenuItem mntmTrackLose = new JMenuItem("Track Lose");
+		mntmTrackLose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//write code for loss
+				LoseTracker lose = new LoseTracker();
+				lose.setVisible(true);
 			}
 		});
-		mnTrackGain.add(mntmTrackLoss);
+		mnTrackGain.add(mntmTrackLose);
 		
 		JMenuItem mntmTrackMaintain = new JMenuItem("Track Maintain");
 		mntmTrackMaintain.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//write code for maintain
+				MaintainTracker maintain = new MaintainTracker();
+				maintain.setVisible(true);
 			}
 		});
 		mnTrackGain.add(mntmTrackMaintain);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JLabel lblGain = new JLabel("Gain");
 		lblGain.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblGain.setBounds(27, 37, 46, 19);
-		contentPane.add(lblGain);
 		
 		JLabel lblLose = new JLabel("Lose");
 		lblLose.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblLose.setBounds(27, 114, 46, 23);
-		contentPane.add(lblLose);
 		
 		JLabel lblMaintain = new JLabel("Maintain");
 		lblMaintain.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblMaintain.setBounds(27, 183, 89, 19);
-		contentPane.add(lblMaintain);
+		
+		JTextArea txtrIfYouWant = new JTextArea();
+		txtrIfYouWant.setBackground(SystemColor.controlHighlight);
+		txtrIfYouWant.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtrIfYouWant.setWrapStyleWord(true);
+		txtrIfYouWant.setText("If you want to gain weight, here are a few things to do:\r\n  ~Dont't skip a meal (have 4-5 meals/day)\r\n  ~Increase protein-rich foods and carb intake\r\n  ~Eat dense fruit and veggies (bannan, apple, carror, corn...)\r\n  ~Begin weight training");
+		
+		JTextArea txtrHereAreSome = new JTextArea();
+		txtrHereAreSome.setBackground(SystemColor.controlHighlight);
+		txtrHereAreSome.setWrapStyleWord(true);
+		txtrHereAreSome.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtrHereAreSome.setText("Here are some things to do, to lose weight:\r\n  ~Inclue excercise in your daily routine\r\n  ~Do aerobic excercises (running, swimming, kickboxing...)\r\n  ~Avoid uncessary eating and eat more veggies\r\n  ~Lower sugar and salt intake");
+		
+		JTextArea txtrToMaintainYour = new JTextArea();
+		txtrToMaintainYour.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		txtrToMaintainYour.setBackground(SystemColor.controlHighlight);
+		txtrToMaintainYour.setText("To maintain your weight,  do these:\r\n  ~Exercise often\r\n  ~Increase veggie and protein intake\r\n  ~Eat Breakfast everyday and stay hydrated\r\n  ~Start weight lifting and yoga");
+		
+		JLabel lblGoTo = new JLabel("Click on Track to choose your option");
+		lblGoTo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(lblGain, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+					.addGap(47)
+					.addComponent(txtrIfYouWant, GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+					.addGap(44))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(lblLose, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+					.addGap(47)
+					.addComponent(txtrHereAreSome, GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+					.addGap(44))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(5)
+					.addComponent(lblMaintain, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(txtrToMaintainYour, GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+					.addGap(44))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(126)
+					.addComponent(lblGoTo, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(6)
+							.addComponent(lblGain, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtrIfYouWant, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(5)
+							.addComponent(lblLose, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtrHereAreSome, GroupLayout.PREFERRED_SIZE, 79, GroupLayout.PREFERRED_SIZE))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(lblMaintain, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+						.addComponent(txtrToMaintainYour, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addComponent(lblGoTo))
+		);
+		contentPane.setLayout(gl_contentPane);
+	}
+	public JLabel getLblIfYouWant() {
+		return lblIfYouWant;
 	}
 }
