@@ -9,12 +9,14 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 public class MaintainTracker extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -45,37 +47,58 @@ public class MaintainTracker extends JFrame {
 		
 		JLabel lblMaintainTracker = new JLabel("Maintain Tracker");
 		lblMaintainTracker.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		lblMaintainTracker.setBounds(18, 16, 196, 33);
+		lblMaintainTracker.setBounds(18, 16, 232, 33);
 		contentPane.add(lblMaintainTracker);
 		
 		JLabel lblFoodName = new JLabel("Food Name:");
-		lblFoodName.setBounds(18, 89, 89, 16);
+		lblFoodName.setBounds(18, 75, 89, 16);
 		contentPane.add(lblFoodName);
 		
 		JLabel lblCaloriesPerServing = new JLabel("Calories Per Serving ");
-		lblCaloriesPerServing.setBounds(18, 117, 149, 16);
+		lblCaloriesPerServing.setBounds(17, 103, 149, 16);
 		contentPane.add(lblCaloriesPerServing);
 		
 		JLabel lblTypesOfExcersie = new JLabel("Types of Excersie ");
-		lblTypesOfExcersie.setBounds(18, 145, 121, 16);
+		lblTypesOfExcersie.setBounds(18, 131, 121, 16);
 		contentPane.add(lblTypesOfExcersie);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(272, 141, 52, 27);
-		contentPane.add(comboBox);
-		
 		textField = new JTextField();
-		textField.setBounds(214, 112, 130, 26);
+		textField.setBounds(214, 98, 130, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(214, 84, 130, 26);
+		textField_1.setBounds(214, 70, 130, 26);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JButton btnAddFood = new JButton("Add Food");
+		JButton btnAddFood = new JButton("Done");
 		btnAddFood.setBounds(327, 243, 117, 29);
 		contentPane.add(btnAddFood);
+		
+		JLabel lblNewLabel = new JLabel("Excersie Time");
+		lblNewLabel.setBounds(18, 210, 99, 16);
+		contentPane.add(lblNewLabel);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(214, 205, 130, 26);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JRadioButton rdbtnRunning = new JRadioButton("Weight Training");
+		rdbtnRunning.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		rdbtnRunning.setBounds(189, 127, 141, 23);
+		contentPane.add(rdbtnRunning);
+		
+		JRadioButton rdbtnYoga = new JRadioButton("Yoga");
+		rdbtnYoga.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		rdbtnYoga.setBounds(189, 150, 141, 23);
+		contentPane.add(rdbtnYoga);
+		
+		JRadioButton rdbtnWalking = new JRadioButton("Walking");
+		rdbtnWalking.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
+		rdbtnWalking.setBounds(189, 173, 141, 23);
+		contentPane.add(rdbtnWalking);
 	}
 }
+
