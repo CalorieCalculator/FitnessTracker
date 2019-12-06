@@ -163,6 +163,6 @@ public class OptionInfo extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 	public JLabel getLblIfYouWant() {
-		return lblIfYouWant;
+		return getLblIfYouWant();
 	}
 }
