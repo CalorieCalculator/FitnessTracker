@@ -3,6 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.text.DecimalFormat;
+import java.io.*;
 
 
 public class BMIFrame extends JFrame {
@@ -11,6 +12,7 @@ public class BMIFrame extends JFrame {
  protected JTextField weight;
  protected JTextField height;
  protected JTextField inches;
+ protected double BMI;
  protected JButton btnCalculate, learnMore, option;
  private static DecimalFormat df = new DecimalFormat("00.0");
  /**
@@ -86,13 +88,30 @@ public class BMIFrame extends JFrame {
  }
  class Action1 implements ActionListener{
    public void actionPerformed(ActionEvent e){
-     Double weightFromText = Double.parseDouble(weight.getText());
-     Double feetFromText = Double.parseDouble(height.getText());
-     Double inchesFromText = Double.parseDouble(inches.getText());
+     try{
+       Double weightFromText = Double.parseDouble(weight.getText());
+       Double feetFromText = Double.parseDouble(height.getText());
+       Double inchesFromText = Double.parseDouble(inches.getText());
+       Double heightInInches = ((feetFromText*12)+inchesFromText);
+       Double BMI = ((weightFromText*703)/(heightInInches*heightInInches));
+       String x = df.format(BMI);
      
-     Double heightInInches = ((feetFromText*12)+inchesFromText);
-     Double BMI = ((weightFromText*703)/(heightInInches*heightInInches));
-     String x = df.format(BMI);
+     
+       
+     
+
+     
+
+     
+       try(FileWriter writer = new FileWriter("newUser.txt",true);
+         BufferedWriter br = new BufferedWriter(writer);
+         PrintWriter out = new PrintWriter(br)) {
+         out.println("BMI: "+x);
+         out.println("-----------------------");
+     }
+     catch(IOException er){
+       System.out.print("err");
+     }
 
      
      JLabel yourBMI = new JLabel("BMI:");
@@ -111,26 +130,35 @@ public class BMIFrame extends JFrame {
      contentPane.add(learnMore);
      learnMore.setBounds(315,220,100,30);
        
-     option = new JButton("Information");
+     option = new JButton("Continue");
      option.addActionListener(new Action3());
      contentPane.add(option);
-     option.setBounds(315,240,100,30);
+     option.setBounds(315,245,100,30);
+       
+     }
+     catch(NumberFormatException ee){
+       JOptionPane.showMessageDialog(contentPane,"all inputs must be numbers");
+       
+     }
+
 
 
    }
+   
  }
  class Action2 implements ActionListener{
    public void actionPerformed(ActionEvent e){
-	   bInstructor instructor = new bInstructor();
-	   instructor.setVisible(true);
+    bInstructor instructor = new bInstructor();
+    instructor.setVisible(true);
    }
  }
  
  class Action3 implements ActionListener{
-	 public void actionPerformed(ActionEvent e) {
-		 OptionInfo info = new OptionInfo();
-		 info.setVisible(true);
-	 }
+  public void actionPerformed(ActionEvent e) {
+   OptionInfo info = new OptionInfo();
+   info.setVisible(true);
+   dispose();
+  }
  }
  
 }

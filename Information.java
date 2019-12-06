@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class Information extends JFrame
 {
@@ -113,8 +114,34 @@ public class Information extends JFrame
         {
             public void actionPerformed(ActionEvent event)
             {
+
+                String nameFromTextBox = textField.getText();
+                String lastNameTBox = textField2.getText();
+                String bDay = textField3.getText();
+                String glWeight = textField6.getText();
+                String gndr = textField7.getText();
+                String clrInt = textField8.getText();
+
+                
+                try(Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("newUser.txt"),"utf-8"))){
+                  writer.write(nameFromTextBox+"");
+                  writer.write(lastNameTBox+"\n");
+                  writer.write("BirthDay: "+bDay+"\n");
+
+                  writer.write("Goal Weight: "+glWeight+"\n");
+                  writer.write("Gender: "+gndr+"\n");
+                  writer.write("Daily Caloric Inake: "+clrInt+"\n");
+                  
+
+                }
+                catch (IOException ex){
+                  System.out.println("error");
+                }
+                                                                            
+
                 BMIFrame bmiInfo = new BMIFrame();
                 bmiInfo.setVisible(true);
+                dispose();
             }
         }
         button.addActionListener(new AddNameListener());
@@ -122,7 +149,7 @@ public class Information extends JFrame
     }
     private void creatPanel()
     {
-        panel = new JPanel();
+      panel = new JPanel();
         panel.setLayout(new GridLayout(9,2));
         panel.add(lable,BorderLayout.CENTER);
         panel.add(textField,BorderLayout.CENTER);
