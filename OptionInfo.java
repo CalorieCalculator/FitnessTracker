@@ -94,18 +94,21 @@ public class OptionInfo extends JFrame {
 		lblMaintain.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JTextArea txtrIfYouWant = new JTextArea();
+		txtrIfYouWant.setEditable(false);
 		txtrIfYouWant.setBackground(SystemColor.controlHighlight);
 		txtrIfYouWant.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txtrIfYouWant.setWrapStyleWord(true);
 		txtrIfYouWant.setText("If you want to gain weight, here are a few things to do:\r\n  ~Dont't skip a meal (have 4-5 meals/day)\r\n  ~Increase protein-rich foods and carb intake\r\n  ~Eat dense fruit and veggies (bannan, apple, carror, corn...)\r\n  ~Begin weight training");
 		
 		JTextArea txtrHereAreSome = new JTextArea();
+		txtrHereAreSome.setEditable(false);
 		txtrHereAreSome.setBackground(SystemColor.controlHighlight);
 		txtrHereAreSome.setWrapStyleWord(true);
 		txtrHereAreSome.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txtrHereAreSome.setText("Here are some things to do, to lose weight:\r\n  ~Inclue excercise in your daily routine\r\n  ~Do aerobic excercises (running, swimming, kickboxing...)\r\n  ~Avoid uncessary eating and eat more veggies\r\n  ~Lower sugar and salt intake");
 		
 		JTextArea txtrToMaintainYour = new JTextArea();
+		txtrToMaintainYour.setEditable(false);
 		txtrToMaintainYour.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		txtrToMaintainYour.setBackground(SystemColor.controlHighlight);
 		txtrToMaintainYour.setText("To maintain your weight,  do these:\r\n  ~Exercise often\r\n  ~Increase veggie and protein intake\r\n  ~Eat Breakfast everyday and stay hydrated\r\n  ~Start weight lifting and yoga");
