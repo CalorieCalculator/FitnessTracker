@@ -22,10 +22,10 @@ public class BMI {
   if (bmi<18.5){
   System.out.println("Underweight: Under 18.5");
   }
-  else if (18.5<=bmi<24.9){
+  else if (18.5<=bmi||bmi<24.9){
   System.out.println("Normal: 18.5-24.9");
   }
-  else if (25<=bmi<29.9){
+  else if (25<=bmi||bmi<29.9){
   System.out.println("Overweight: 25-29.9");
   }
   else 
