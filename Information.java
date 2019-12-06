@@ -124,13 +124,13 @@ public class Information extends JFrame
 
                 
                 try(Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("newUser.txt"),"utf-8"))){
-                  writer.write(nameFromTextBox+"");
-                  writer.write(lastNameTBox+"\n");
-                  writer.write("BirthDay: "+bDay+"\n");
+                  writer.write(nameFromTextBox+" ");
+                  writer.write(lastNameTBox+ "\r\n");
+                  writer.write("BirthDay: "+bDay+ "\r\n");
 
-                  writer.write("Goal Weight: "+glWeight+"\n");
-                  writer.write("Gender: "+gndr+"\n");
-                  writer.write("Daily Caloric Inake: "+clrInt+"\n");
+                  writer.write("Goal Weight: "+glWeight+ "\r\n");
+                  writer.write("Gender: "+gndr+ "\r\n");
+                  writer.write("Daily Caloric Inake: "+clrInt+"\r\n");
                   
 
                 }
