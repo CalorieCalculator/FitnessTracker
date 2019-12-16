@@ -15,6 +15,7 @@ public class ExTracker extends JFrame {
     private JTextField textField_1;
     private JTextField textField_2;
     private JTextField textField3;
+    private String fileName;
     static double calories=0.0;
 
 
@@ -78,6 +79,12 @@ public class ExTracker extends JFrame {
         btnAddFood.addActionListener(new ActionListener1());
         contentPane.add(btnAddFood);
     }
+    public String getFileName() {
+        return fileName;
+    }
+    public void setFileName(String fileName){
+        this.fileName = fileName;
+    }
     class ActionListener1 implements ActionListener{
         public void actionPerformed(ActionEvent e) {
          String exType = textField3.getText();
@@ -85,7 +92,7 @@ public class ExTracker extends JFrame {
          String calsBurned = textField_1.getText();
          calories += Double.parseDouble(calsBurned);
          
-         try(FileWriter writer = new FileWriter("newUser.txt",true);
+         try(FileWriter writer = new FileWriter(fileName,true);
          BufferedWriter br = new BufferedWriter(writer);
          PrintWriter out = new PrintWriter(br)) {
          out.println("Exercise: "+exType);

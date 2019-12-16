@@ -1,23 +1,26 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
 
 public class MaintainTracker extends JFrame {
 
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
-    private JTextArea textField_3;
     private String foodName;
     private double foodCalories;
     private boolean clicked;
     private DisplayMaintain mainDis;
-    private double cB;
     /**
      * Launch the application.
      */
@@ -26,9 +29,9 @@ public class MaintainTracker extends JFrame {
     /**
      * Create the frame.
      */
-    public MaintainTracker(DisplayMaintain mainDis) {
+    public MaintainTracker() {
         this.mainDis = mainDis;
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,7 +40,7 @@ public class MaintainTracker extends JFrame {
 
         JLabel lblMaintainTracker = new JLabel("Maintain Tracker");
         lblMaintainTracker.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-        lblMaintainTracker.setBounds(18, 16, 250, 33);
+        lblMaintainTracker.setBounds(18, 16, 196, 33);
         contentPane.add(lblMaintainTracker);
 
         JLabel lblFoodName = new JLabel("Food Name:");
@@ -49,8 +52,12 @@ public class MaintainTracker extends JFrame {
         contentPane.add(lblCaloriesPerServing);
 
         JLabel lblTypesOfExcersie = new JLabel("Types of Excersie ");
-        lblTypesOfExcersie.setBounds(18, 165, 121, 16);
+        lblTypesOfExcersie.setBounds(18, 145, 121, 16);
         contentPane.add(lblTypesOfExcersie);
+
+        JComboBox comboBox = new JComboBox();
+        comboBox.setBounds(272, 141, 52, 27);
+        contentPane.add(comboBox);
 
         textField = new JTextField();
         textField.setBounds(214, 112, 130, 26);
@@ -62,7 +69,7 @@ public class MaintainTracker extends JFrame {
         contentPane.add(textField_1);
         textField_1.setColumns(10);
 
-        JButton btnAddFood = new JButton("Done");
+        JButton btnAddFood = new JButton("Add Food");
         btnAddFood.setBounds(327, 243, 117, 29);
         btnAddFood.addActionListener(new ActionListener() {
             @Override
@@ -78,50 +85,21 @@ public class MaintainTracker extends JFrame {
             }
         });
         contentPane.add(btnAddFood);
-        JLabel lblExcersieTime = new JLabel("Excersie Time ");
-        lblExcersieTime.setBounds(18, 145, 105, 16);
-        contentPane.add(lblExcersieTime);
-
-        textField_3 = new JTextArea();
-        textField_3.setBounds(214, 145, 130, 23);
-        contentPane.add(textField_3);
-        textField_3.setColumns(10);
-
-        JRadioButton rdbtnWeightTraning = new JRadioButton("Weight training");
-        rdbtnWeightTraning.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-        rdbtnWeightTraning.setBounds(214, 165, 141, 23);
-        rdbtnWeightTraning.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cB = 2.9 * Double.valueOf(textField_3.getText());
-                mainDis.getExercise().append(rdbtnWeightTraning.getText()+" "+cB+" "+"cal"+" "+textField_3.getText()+"minutes"+'\n');
-            }
-        });
-        contentPane.add(rdbtnWeightTraning);
-
-        JRadioButton rdbtnNewRadioButton = new JRadioButton("Yoga");
-        rdbtnNewRadioButton.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-        rdbtnNewRadioButton.setBounds(214, 195, 141, 23);
-        rdbtnNewRadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cB = 1.7 * Double.valueOf(textField_3.getText());
-                mainDis.getExercise().append(rdbtnWeightTraning.getText()+" "+cB+" "+"cal"+" "+textField_3.getText()+"minutes"+'\n');
-            }
-        });
-        contentPane.add(rdbtnNewRadioButton);
-
-        JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Wallking");
-        rdbtnNewRadioButton_1.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-        rdbtnNewRadioButton_1.setBounds(214, 225, 141, 23);
-        rdbtnNewRadioButton_1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cB = 2.4 * Double.valueOf(textField_3.getText());
-                mainDis.getExercise().append(rdbtnWeightTraning.getText()+" "+cB+" "+"cal"+" "+textField_3.getText()+"minutes"+'\n');
-            }
-        });
-        contentPane.add(rdbtnNewRadioButton_1);
     }
 
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public double getFoodCalories() {
+        return foodCalories;
+    }
+
+    public void setFoodCalories(double foodCalories) {
+        this.foodCalories = foodCalories;
+    }
 }

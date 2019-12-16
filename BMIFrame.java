@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.text.DecimalFormat;
 import java.io.*;
-
+import java.util.*;
 
 public class BMIFrame extends JFrame {
 
@@ -14,6 +14,7 @@ public class BMIFrame extends JFrame {
  protected JTextField inches;
  protected double BMI;
  protected JButton btnCalculate, learnMore, option;
+ protected String fileName;
  private static DecimalFormat df = new DecimalFormat("00.0");
  /**
   * Launch the application.
@@ -86,7 +87,15 @@ public class BMIFrame extends JFrame {
   btnCalculate.setBounds(172, 180, 89, 23);
   
  }
- class Action1 implements ActionListener{
+
+    public String getFileName() {
+        return fileName;
+    }
+    public void setFileName(String fileName){
+     this.fileName = fileName;
+    }
+
+    class Action1 implements ActionListener{
    public void actionPerformed(ActionEvent e){
      try{
        Double weightFromText = Double.parseDouble(weight.getText());
@@ -95,17 +104,12 @@ public class BMIFrame extends JFrame {
        Double heightInInches = ((feetFromText*12)+inchesFromText);
        Double BMI = ((weightFromText*703)/(heightInInches*heightInInches));
        String x = df.format(BMI);
-     
-     
-       
-     
-
-     
-
-     
-       try(FileWriter writer = new FileWriter("newUser.txt",true);
+       Calendar calendar = Calendar.getInstance();
+       try(FileWriter writer = new FileWriter(fileName,true);
          BufferedWriter br = new BufferedWriter(writer);
          PrintWriter out = new PrintWriter(br)) {
+           out.println("Date:"+calendar.get(Calendar.MONTH)+"/"+calendar.get(Calendar.DAY_OF_MONTH)+"/"+calendar.get(Calendar.YEAR));
+           out.println("Week of this month:"+calendar.get(Calendar.WEEK_OF_MONTH));
          out.println("BMI: "+x);
          out.println("-----------------------");
      }
@@ -156,6 +160,7 @@ public class BMIFrame extends JFrame {
  class Action3 implements ActionListener{
   public void actionPerformed(ActionEvent e) {
    OptionInfo info = new OptionInfo();
+   info.setFileName(fileName);
    info.setVisible(true);
    dispose();
   }

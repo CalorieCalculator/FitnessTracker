@@ -25,6 +25,7 @@ public class Information extends JFrame
     protected JLabel lable7;
     protected JLabel lable8;
     protected JLabel lable9;
+    static String nameFromTextBox;
     private JTextArea resultArea;
     private JPanel panel;
 
@@ -115,31 +116,37 @@ public class Information extends JFrame
             public void actionPerformed(ActionEvent event)
             {
 
-                String nameFromTextBox = textField.getText();
+                nameFromTextBox = textField.getText();
                 String lastNameTBox = textField2.getText();
                 String bDay = textField3.getText();
                 String glWeight = textField6.getText();
                 String gndr = textField7.getText();
                 String clrInt = textField8.getText();
 
-                
-                try(Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("newUser.txt"),"utf-8"))){
-                  writer.write(nameFromTextBox+" ");
-                  writer.write(lastNameTBox+ "\r\n");
-                  writer.write("BirthDay: "+bDay+ "\r\n");
-
-                  writer.write("Goal Weight: "+glWeight+ "\r\n");
-                  writer.write("Gender: "+gndr+ "\r\n");
-                  writer.write("Daily Caloric Inake: "+clrInt+"\r\n");
-                  
+                String fileName = nameFromTextBox+".txt";
+                File file = new File(fileName);
+                if(file.exists()){
 
                 }
-                catch (IOException ex){
-                  System.out.println("error");
+                else {
+                    try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"))) {
+                        writer.write(nameFromTextBox + " ");
+                        writer.write(lastNameTBox + "\n");
+                        writer.write("BirthDay: " + bDay + "\n");
+
+                        writer.write("Goal Weight: " + glWeight + "\n");
+                        writer.write("Gender: " + gndr + "\n");
+                        writer.write("Daily Caloric Intake: " + clrInt + "\n");
+                        writer.write("\n");
+
+
+                    } catch (IOException ex) {
+                        System.out.println("error");
+                    }
                 }
-                                                                            
 
                 BMIFrame bmiInfo = new BMIFrame();
+                bmiInfo.setFileName(fileName);
                 bmiInfo.setVisible(true);
                 dispose();
             }
@@ -147,6 +154,10 @@ public class Information extends JFrame
         button.addActionListener(new AddNameListener());
 
     }
+
+    /**
+     * add date for log in, track the food for a day
+     */
     private void creatPanel()
     {
       panel = new JPanel();

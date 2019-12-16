@@ -19,12 +19,16 @@ import java.awt.SystemColor;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.io.*;
+import java.util.Calendar; 
 
 public class OptionInfo extends JFrame {
 
  private JPanel contentPane;
  protected String line = null;
-
+ static String fileName, calFileName, exFileName;
+ protected double weeklyCals=0;
+ protected double weeklyEx=0;
+ 
  /**
   * Launch the application.
   */
@@ -60,10 +64,11 @@ public class OptionInfo extends JFrame {
   mntmTrackGain.addActionListener(new ActionListener() {
    public void actionPerformed(ActionEvent e) {
     LoseTrackOptions lose = new LoseTrackOptions();
+    lose.setFileName(fileName);
     lose.setBounds(100, 100, 513, 345);
     lose.setVisible(true);
     
-    try(FileWriter writer = new FileWriter("newUser.txt",true);
+    try(FileWriter writer = new FileWriter(fileName,true);
          BufferedWriter br = new BufferedWriter(writer);
          PrintWriter out = new PrintWriter(br)) {
          out.println("Goal is to Gain Weight!");
@@ -83,10 +88,11 @@ public class OptionInfo extends JFrame {
   mntmTrackLose.addActionListener(new ActionListener() {
    public void actionPerformed(ActionEvent e) {
     LoseTrackOptions lose = new LoseTrackOptions();
+    lose.setFileName(fileName);
     lose.setBounds(100, 100, 513, 345);
     lose.setVisible(true);
     
-     try(FileWriter writer = new FileWriter("newUser.txt",true);
+     try(FileWriter writer = new FileWriter(fileName,true);
          BufferedWriter br = new BufferedWriter(writer);
          PrintWriter out = new PrintWriter(br)) {
          out.println("Goal is to Lose Weight!");
@@ -107,10 +113,11 @@ public class OptionInfo extends JFrame {
   mntmTrackMaintain.addActionListener(new ActionListener() {
    public void actionPerformed(ActionEvent e) {
     LoseTrackOptions lose = new LoseTrackOptions();
+    lose.setFileName(fileName);
     lose.setBounds(100, 100, 513, 345);
     lose.setVisible(true);
     
-     try(FileWriter writer = new FileWriter("newUser.txt",true);
+     try(FileWriter writer = new FileWriter(fileName,true);
          BufferedWriter br = new BufferedWriter(writer);
          PrintWriter out = new PrintWriter(br)) {
          out.println("Goal is to Maintain Weight!");
@@ -134,7 +141,7 @@ public class OptionInfo extends JFrame {
   opnTrkr.addActionListener(new ActionListener() {
    public void actionPerformed(ActionEvent e) {
      try{
-       ProcessBuilder pb = new ProcessBuilder("Notepad.exe","newUser.txt");
+       ProcessBuilder pb = new ProcessBuilder("Notepad.exe",fileName);
        pb.start();
      }
      catch(IOException ecp){
@@ -181,6 +188,102 @@ public class OptionInfo extends JFrame {
      
   });
   mnTrackGain.add(calTrkr);
+  
+  
+  JMenuItem endDay = new JMenuItem("End Day");
+  endDay.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+     
+     calFileName = Information.nameFromTextBox+"_cals.txt";
+     exFileName = Information.nameFromTextBox+"exercise.txt";
+     File calFile = new File(calFileName);
+     File exFile = new File(exFileName);
+     
+     if(calFile.exists()){
+       try(FileWriter writer = new FileWriter(calFileName,true);
+           BufferedWriter br2 = new BufferedWriter(writer);
+           PrintWriter out2 = new PrintWriter(br2)){
+                  out2.println(Double.toString(FoodTracker.foodCalories));
+
+           }
+           catch(IOException er){
+                  System.out.print("err");
+                }
+       try(FileWriter writer2 = new FileWriter(exFileName,true);
+     
+           BufferedWriter br3 = new BufferedWriter(writer2);
+           PrintWriter out3 = new PrintWriter(br3)){
+                  out3.println(Double.toString(ExTracker.calories));
+
+           }
+           catch(IOException er){
+                  System.out.print("err");
+                }
+             
+
+     }
+     else{
+                    try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(calFile), "utf-8"))) {
+                        writer.write(Double.toString(FoodTracker.foodCalories));  
+                        writer.write("\n");
+                        
+                    } 
+                    catch (IOException ex) {
+                        System.out.println("error");
+                    }
+                    try(Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(exFile), "utf-8"))) {
+                        writer.write(Double.toString(ExTracker.calories)); 
+                        writer.write("\n");
+                        
+                }
+                    catch (IOException ex) {
+                        System.out.println("error");
+                    }
+                
+       
+    
+ 
+    
+   }
+     
+    dispose();
+   }
+   
+  });
+  mnTrackGain.add(endDay);
+  
+
+                     
+  /*Calendar calendar2 = Calendar.getInstance();
+  JMenuItem progress = new JMenuItem("Weekly Progress");
+  progress.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent e) {
+
+     String weekNo = Integer.toString(calendar2.get(Calendar.WEEK_OF_MONTH));
+     String progFileName = Information.nameFromTextBox+weekNo+".txt";
+     
+     File weekProg = new File(progFileName);
+     
+                if(weekProg.exists()){
+                  
+
+                }
+                else {
+                    try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(weekProg), "utf-8"))) {
+                        writer.write("Weekly Calories: "+ weekTracker.weeklyCals);
+                        writer.write("Weekly Calories Burned: "+ weekTracker.weeklyEx);
+
+                    } catch (IOException ex) {
+                        System.out.println("error");
+                    }
+                }    
+    
+   }
+   
+  });
+  mnTrackGain.add(progress);*/
+  
+  
            
   
   contentPane = new JPanel();
@@ -271,4 +374,10 @@ public class OptionInfo extends JFrame {
  public JLabel getLblIfYouWant() {
   return getLblIfYouWant();
  }
+    public String getFileName() {
+        return fileName;
+    }
+    public void setFileName(String fileName){
+        this.fileName = fileName;
+    }
 }

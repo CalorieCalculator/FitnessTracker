@@ -10,7 +10,7 @@ public class LoseTrackOptions extends JFrame {
 
  protected JPanel contentPane;
  protected JButton trackFood, trackEx;
- 
+ private String fileName;
   public LoseTrackOptions() {
     contentPane = new JPanel();
     contentPane.setLayout(new GridLayout(2,1));
@@ -30,7 +30,8 @@ public class LoseTrackOptions extends JFrame {
   }
  class Action1 implements ActionListener{
    public void actionPerformed(ActionEvent e){
-     FoodTracker dl = new FoodTracker();
+     FoodTracker dl = new FoodTracker(fileName);
+     dl.setFileName(fileName);
      dl.setBounds(100,100,513,345);
      dl.setVisible(true);
    }
@@ -38,8 +39,15 @@ public class LoseTrackOptions extends JFrame {
  class Action2 implements ActionListener{
    public void actionPerformed(ActionEvent e){
      ExTracker et = new ExTracker();
+     et.setFileName(fileName);
      et.setBounds(100,100,513,345);
      et.setVisible(true);
    }
  }
+    public String getFileName() {
+        return fileName;
+    }
+    public void setFileName(String fileName){
+        this.fileName = fileName;
+    }
 }

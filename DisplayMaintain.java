@@ -13,7 +13,6 @@ public class DisplayMaintain extends JFrame {
  private JTextArea food;
  private JTextArea caloriesR;
  private JTextArea TotalColories;
- private JTextArea Exercise;
 
  /**
   * Launch the application.
@@ -45,7 +44,6 @@ public class DisplayMaintain extends JFrame {
    food = new JTextArea();
    caloriesR = new JTextArea();
    TotalColories = new JTextArea();
-   Exercise = new JTextArea();
    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    setBounds(100, 100, 450, 300);
    contentPane = new JPanel();
@@ -95,40 +93,29 @@ public class DisplayMaintain extends JFrame {
    caloriesR.setText("2750");
    caloriesR.setBounds(6,120,117,29);
    contentPane.add(caloriesR);
-
-    JLabel exercisesT = new JLabel("Exercises List for today");
-   exercisesT.setBounds(250, 151, 220, 16);
-   contentPane.add(exercisesT);
-
-   Exercise = new JTextArea();
-   Exercise.setBounds(250,180,230,29);
-   contentPane.add(Exercise);
    
    JButton btnInformationPage = new JButton("Information Page ");
    btnInformationPage.setBounds(145, 243, 155, 29);
    contentPane.add(btnInformationPage);
    btnInformationPage.addActionListener(new ActionListener() {
     public void actionPerformed2(ActionEvent e) {
-     Information information = new Information();
-     information.setVisible(true);
+     Information informations = new Information();
+     informations.setVisible(true);
     }
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-     Information information = new Information();
-     information.setVisible(true);
+     Information informations = new Information();
+     informations.setVisible(true);
 
     }
    });
 
   }
  public void openMaintainTracker(){
-  MaintainTracker maintainTracker = new MaintainTracker(this);
+  MaintainTracker maintainTracker = new MaintainTracker();
   maintainTracker.setVisible(true);
  }
 
- public JTextArea getExercise() {
-  return Exercise;
  }
-}

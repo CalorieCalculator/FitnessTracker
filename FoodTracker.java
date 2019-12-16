@@ -18,6 +18,7 @@ public class FoodTracker extends JFrame {
     static double foodCalories=0.0;
     private boolean clicked;
     private DisplayLoss mainDis;
+    private String fileName;
     /**
      * Launch the application.
      */
@@ -26,7 +27,13 @@ public class FoodTracker extends JFrame {
     /**
      * Create the frame.
      */
-    public FoodTracker() {
+    public String getFileName() {
+        return fileName;
+    }
+    public void setFileName(String fileName){
+        this.fileName = fileName;
+    }
+    public FoodTracker(String fileName) {
         this.mainDis = mainDis;
         clicked = false;
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,20 +68,22 @@ public class FoodTracker extends JFrame {
         textField_1.setBounds(214, 84, 130, 26);
         contentPane.add(textField_1);
         textField_1.setColumns(10);
-        
+
         JButton btnAddFood = new JButton("Add to Tracker");
         btnAddFood.setBounds(327, 200, 155, 29);
         btnAddFood.addActionListener(new ActionListener1());
         contentPane.add(btnAddFood);
     }
+
     class ActionListener1 implements ActionListener{
         public void actionPerformed(ActionEvent e) {
          // try{
+
             String cals = textField.getText();
             String food = textField_1.getText();
             try{
             foodCalories += Double.parseDouble(cals);
-            try(FileWriter writer = new FileWriter("newUser.txt",true);
+            try(FileWriter writer = new FileWriter(fileName,true);
                 BufferedWriter br = new BufferedWriter(writer);
                 PrintWriter out = new PrintWriter(br)) {
                   out.println("Food Eaten: "+food);
