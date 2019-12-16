@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//this class hold the info for losing weight and lets you store food and exercise
 public class LoseTracker extends JFrame {
 
     private JPanel contentPane;

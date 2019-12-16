@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
+//lets you enter food and exercise for maintaing weight
 public class MaintainTracker extends JFrame {
 
     private JPanel contentPane;

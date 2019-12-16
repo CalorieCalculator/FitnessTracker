@@ -5,7 +5,7 @@ import javax.swing.border.EmptyBorder;
 import java.text.DecimalFormat;
 import java.io.*;
 
-
+//saves the food and excercise to the file for losing weight
 public class LoseTrackOptions extends JFrame {
 
  protected JPanel contentPane;

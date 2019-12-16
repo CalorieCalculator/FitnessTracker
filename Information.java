@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 
+//this class hold the users basic info (name, birth, weight)
 public class Information extends JFrame
 {
     protected JButton button;
@@ -25,9 +26,11 @@ public class Information extends JFrame
     protected JLabel lable7;
     protected JLabel lable8;
     protected JLabel lable9;
+    static String nameFromTextBox;
     private JTextArea resultArea;
     private JPanel panel;
 
+    //creates the set up for the frame and saves it to the file
     public Information()
     {
         resultArea = new JTextArea();
@@ -115,7 +118,7 @@ public class Information extends JFrame
             public void actionPerformed(ActionEvent event)
             {
 
-                String nameFromTextBox = textField.getText();
+                nameFromTextBox = textField.getText();
                 String lastNameTBox = textField2.getText();
                 String bDay = textField3.getText();
                 String glWeight = textField6.getText();
@@ -129,13 +132,14 @@ public class Information extends JFrame
                 }
                 else {
                     try (Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName), "utf-8"))) {
-                        writer.write(nameFromTextBox + "");
+                        writer.write(nameFromTextBox + " ");
                         writer.write(lastNameTBox + "\n");
                         writer.write("BirthDay: " + bDay + "\n");
 
                         writer.write("Goal Weight: " + glWeight + "\n");
                         writer.write("Gender: " + gndr + "\n");
-                        writer.write("Daily Caloric Inake: " + clrInt + "\n");
+                        writer.write("Daily Caloric Intake: " + clrInt + "\n");
+                        writer.write("\n");
 
 
                     } catch (IOException ex) {
@@ -155,9 +159,6 @@ public class Information extends JFrame
 
     /**
      * add date for log in, track the food for a day
-     * After user type in their information, the program will check the users has ever typed in their
-     * information.
-     * If not, start a new txt file. Else, choose the exit files according the user's first name.
      */
     private void creatPanel()
     {
