@@ -15,7 +15,7 @@ public class FitnessTracker extends JPanel implements ActionListener{
      welcomeLabel.setHorizontalTextPosition(JLabel.CENTER);
      add(welcomeLabel);
      
-     //continue button opens the BMI calculator frame
+     //continue button opens the BMI calculaote frame
      cont = new JButton("Continue");
      cont.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
@@ -23,7 +23,11 @@ public class FitnessTracker extends JPanel implements ActionListener{
        information.setVisible(true);
        
       }
-     }); 
+     });
+     /**
+      * after clicking this button, will start the information frame. Then the user can type in their
+      * basic information
+      */
      add(cont);
                  
  }
