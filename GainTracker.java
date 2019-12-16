@@ -19,6 +19,7 @@ public class GainTracker extends JFrame {
 	private double foodCalories;
 	private boolean clicked;
 	private DisplayGain mainDis;
+	private boolean one,two, three;
 	private double cB;
 	/**
 	 * Launch the application.
