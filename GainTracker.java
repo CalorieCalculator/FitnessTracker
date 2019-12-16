@@ -1,3 +1,4 @@
+//part of program not fully implemented into GUI
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -74,11 +75,15 @@ public class GainTracker extends JFrame {
   btnAddFood.addActionListener(new ActionListener() {
    @Override
    public void actionPerformed(ActionEvent e) {
+     //getting information from text box
     foodName = textField_1.getText();
     foodCalories = Double.valueOf(textField.getText());
+    //calculates remaining calories for day
     double remaining =Double.parseDouble(mainDis.getCaloriesR().getText());
+    //adds food name to display
     mainDis.getFood().append(foodName+'\n');
     remaining = remaining - foodCalories;
+    //sets remaining calorie values for day based on current intake
     mainDis.getCaloriesR().setText(String.valueOf(remaining));
     mainDis.setVisible(true);
     dispose();

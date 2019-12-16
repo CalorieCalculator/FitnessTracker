@@ -1,3 +1,4 @@
+//Part of program not fully implemented into GUI
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -55,7 +56,7 @@ public class DisplayMaintain extends JFrame {
    lblCalorieDisplay.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 26));
    lblCalorieDisplay.setBounds(32, -11, 412, 61);
    contentPane.add(lblCalorieDisplay);
-   
+      //adding buttons to frame
    JButton btnAddNewFood = new JButton("Add New Food");
    btnAddNewFood.setBounds(327, 243, 117, 29);
    contentPane.add(btnAddNewFood);
@@ -66,6 +67,7 @@ public class DisplayMaintain extends JFrame {
      dispose();
     }
    });
+
    
    JButton btnCalenderView = new JButton("Calender View");
    btnCalenderView.setBounds(6, 243, 117, 29);
@@ -93,7 +95,7 @@ public class DisplayMaintain extends JFrame {
    caloriesR.setText("2750");
    caloriesR.setBounds(6,120,117,29);
    contentPane.add(caloriesR);
-   
+   //adds actionlistener to make button open information page
    JButton btnInformationPage = new JButton("Information Page ");
    btnInformationPage.setBounds(145, 243, 155, 29);
    contentPane.add(btnInformationPage);

@@ -1,3 +1,5 @@
+//not working completly
+//will be able to pull up a file for each week of the month when this is incorporated into the GUI
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -31,9 +33,11 @@ public class weekTracker extends JPanel{
   
   public weekTracker(){
   try{
+    //reads file of caloric intake for each day
     calReader = new BufferedReader(new FileReader(OptionInfo.calFileName));
     String t = null;
     while((t = calReader.readLine())!=null){
+      //adds to total weekly calories
       weeklyCals+=(Double.parseDouble(t));
     }
   }
@@ -43,7 +47,7 @@ public class weekTracker extends JPanel{
   catch(IOException ets){
     System.out.print("Error");
   }
-  
+  //reads file of calories burned for each day
   try{
     exReader = new BufferedReader(new FileReader(OptionInfo.exFileName));
     String t2= null;
