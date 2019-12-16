@@ -15,28 +15,12 @@ public class FitnessTracker extends JPanel implements ActionListener{
      welcomeLabel.setHorizontalTextPosition(JLabel.CENTER);
      add(welcomeLabel);
      
-     //continue button opens the BMI calculaote frame
+     //continue button opens the BMI calculator frame
      cont = new JButton("Continue");
      cont.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
-       JFrame userType = new JFrame("Welcome!");
-       userType.setSize(460,200);
-       JLabel usrMessage = new JLabel("If you are a new user enter complete information\n or else enter only your name");
-       JButton cnt = new JButton("Go!");
-       
-       userType.add(usrMessage);
-       userType.add(cnt,BorderLayout.SOUTH);
-       
-       userType.setVisible(true);
-       
-       cnt.addActionListener(new ActionListener(){
-         public void actionPerformed(ActionEvent et){
-           Information information = new Information();
-           information.setVisible(true);
-           userType.dispose();
-           
-         }
-       });
+       Information information = new Information();
+       information.setVisible(true);
        
       }
      }); 

@@ -1,5 +1,8 @@
 import javax.swing.JFrame;
 
+/* This is the frame that starts whole project.
+ It runs Fitness Tracker which leads to the rest of the program
+*/
 public class FitnessFrame {
 	public static void main(String[] args){
 		JFrame frame = new JFrame();

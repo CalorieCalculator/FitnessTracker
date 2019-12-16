@@ -40,12 +40,17 @@ public class ExTracker extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
+        /* This is the Excersie tracker page, where the user can imput all of their information, so that they can see if 
+        they are on track. 
+        */
         JLabel lblExTracker = new JLabel("Exercise Tracker");
         lblExTracker.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
         lblExTracker.setBounds(18, 16, 250, 33);
         contentPane.add(lblExTracker);
         
-        
+        /*the user will enter what kind of exercise they did that day, how long they did the excersie for,
+           and how much calores they have burned.
+        */
         JLabel lblExType = new JLabel("Excercise Type:");
         lblExType.setBounds(18, 89, 120, 16);
         contentPane.add(lblExType);
@@ -74,6 +79,7 @@ public class ExTracker extends JFrame {
         contentPane.add(textField3);
         textField3.setColumns(10);
         
+        // here they can click the buttom to add this exercise to the rest of the tackers 
         JButton btnAddFood = new JButton("Add to Tracker");
         btnAddFood.setBounds(327, 200, 155, 29);
         btnAddFood.addActionListener(new ActionListener1());
